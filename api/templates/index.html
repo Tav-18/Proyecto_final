@@ -308,26 +308,124 @@
 
             <div class="d-none d-lg-flex align-items-end">
               <ul class="d-flex justify-content-end list-unstyled m-0">
-                <li>
-                  <a href="index.html" class="mx-3">
-                    <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="index.html" class="mx-3">
-                    <iconify-icon icon="mdi:heart" class="fs-4"></iconify-icon>
-                  </a>
-                </li>
 
-                <li class="">
-                  <a href="index.html" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-                    aria-controls="offcanvasCart">
-                    <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                    <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                      03
-                    </span>
-                  </a>
-                </li>
+              <!-- ***************************-->
+              <li class="nav-item dropdown">
+                <a 
+                  class="nav-link dropdown-toggle mx-3" 
+                  href="#" 
+                  id="dropdownMenuButton" 
+                  role="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+                  <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    <a 
+                      class="dropdown-item" 
+                      href="#" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#datosDuenoModal">
+                      Datos del dueño
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      class="dropdown-item" 
+                      href="#" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#datosMascotaModal">
+                      Datos mascota
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              <!-- Modal para Datos del Dueño -->
+              <div class="modal fade" id="datosDuenoModal" tabindex="-1" aria-labelledby="datosDuenoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="datosDuenoModalLabel">Datos del Dueño</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="mb-3">
+                          <label for="apellido" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                        </div>
+                        <div class="mb-3">
+                          <label for="telefono" class="form-label">Teléfono</label>
+                          <input type="text" class="form-control" id="telefono" placeholder="Ingrese su número de teléfono">
+                        </div>
+                        <div class="mb-3">
+                          <label for="numMascotas" class="form-label">Número de Mascotas</label>
+                          <input type="number" class="form-control" id="numMascotas" placeholder="Ingrese el número de mascotas">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal para Datos de la Mascota -->
+<div class="modal fade" id="datosMascotaModal" tabindex="-1" aria-labelledby="datosMascotaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosMascotaModalLabel">Datos de la Mascota</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="tipoMascota" class="form-label">Tipo de Mascota</label>
+            <select class="form-select" id="tipoMascota">
+              <option value="" selected>Seleccione el tipo de mascota</option>
+              <option value="perro">Perro</option>
+              <option value="gato">Gato</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="nombreMascota" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombreMascota" placeholder="Ingrese el nombre de la mascota">
+          </div>
+          <div class="mb-3">
+            <label for="edadMascota" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edadMascota" placeholder="Ingrese la edad de la mascota">
+          </div>
+          <div class="mb-3">
+            <label for="tamanoMascota" class="form-label">Tamaño</label>
+            <select class="form-select" id="tamanoMascota">
+              <option value="" selected>Seleccione el tamaño</option>
+              <option value="pequeno">Pequeño</option>
+              <option value="mediano">Mediano</option>
+              <option value="grande">Grande</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+              
+              <!--*************************************************-->
               </ul>
 
             </div>
@@ -342,6 +440,54 @@
 
     </div>
   </header>
+
+  <!-- Botón flotante -->
+  <!-- Botón flotante -->
+<a 
+href="#" 
+class="telegram-button" 
+id="chatButton" 
+aria-label="Abrir Chat">
+<iconify-icon icon="mdi:telegram" class="telegram-icon"></iconify-icon>
+</a>
+
+<!-- Ventana de chat -->
+<div class="chat-window" id="chatWindow">
+<div class="chat-header">
+  <h5>Asistente Virtual</h5>
+  <button class="close-chat" id="closeChatButton">&times;</button>
+</div>
+<div class="chat-body">
+  <p class="chat-message bot-message">¡Hola! ¿En qué puedo ayudarte hoy?</p>
+  <!-- Aquí se pueden agregar más mensajes dinámicamente -->
+</div>
+<div class="chat-footer">
+  <input type="text" class="chat-input" id="chatInput" placeholder="Escribe un mensaje..." />
+  <button class="send-button" id="sendButton">Enviar</button>
+</div>
+</div>
+
+
+
+<!-- JavaScript -->
+<script>
+const chatButton = document.getElementById('chatButton');
+const chatWindow = document.getElementById('chatWindow');
+const closeChatButton = document.getElementById('closeChatButton');
+
+// Mostrar/Ocultar ventana de chat
+chatButton.addEventListener('click', () => {
+  chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+});
+
+closeChatButton.addEventListener('click', () => {
+  chatWindow.style.display = 'none';
+});
+</script>
+
+
+<!-------------------------------------------------------->
+
 
   <section id="banner" style="background: #F9F3EC;">
     <div class="container">
