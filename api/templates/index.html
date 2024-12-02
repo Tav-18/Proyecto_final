@@ -351,77 +351,134 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form id="datosDuenoForm">
+                        {% csrf_token %}
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
                         </div>
                         <div class="mb-3">
                           <label for="apellido" class="form-label">Apellido</label>
-                          <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                          <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
                         </div>
                         <div class="mb-3">
                           <label for="telefono" class="form-label">Teléfono</label>
-                          <input type="text" class="form-control" id="telefono" placeholder="Ingrese su número de teléfono">
+                          <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
                         </div>
                         <div class="mb-3">
                           <label for="numMascotas" class="form-label">Número de Mascotas</label>
-                          <input type="number" class="form-control" id="numMascotas" placeholder="Ingrese el número de mascotas">
+                          <input type="number" class="form-control" id="numMascotas" name="num_mascotas" placeholder="Ingrese el número de mascotas" required>
                         </div>
                       </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
+                      <button type="button" class="btn btn-primary" onclick="guardarDatosDueno()">Guardar</button>
                     </div>
                   </div>
                 </div>
               </div>
               
               <!-- Modal para Datos de la Mascota -->
-<div class="modal fade" id="datosMascotaModal" tabindex="-1" aria-labelledby="datosMascotaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="datosMascotaModalLabel">Datos de la Mascota</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="tipoMascota" class="form-label">Tipo de Mascota</label>
-            <select class="form-select" id="tipoMascota">
-              <option value="" selected>Seleccione el tipo de mascota</option>
-              <option value="perro">Perro</option>
-              <option value="gato">Gato</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="nombreMascota" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreMascota" placeholder="Ingrese el nombre de la mascota">
-          </div>
-          <div class="mb-3">
-            <label for="edadMascota" class="form-label">Edad</label>
-            <input type="number" class="form-control" id="edadMascota" placeholder="Ingrese la edad de la mascota">
-          </div>
-          <div class="mb-3">
-            <label for="tamanoMascota" class="form-label">Tamaño</label>
-            <select class="form-select" id="tamanoMascota">
-              <option value="" selected>Seleccione el tamaño</option>
-              <option value="pequeno">Pequeño</option>
-              <option value="mediano">Mediano</option>
-              <option value="grande">Grande</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
+              <div class="modal fade" id="datosMascotaModal" tabindex="-1" aria-labelledby="datosMascotaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="datosMascotaModalLabel">Datos de la Mascota</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="datosMascotaForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="tipoMascota" class="form-label">Tipo de Mascota</label>
+                          <select class="form-select" id="tipoMascota" name="tipo_mascota" required>
+                            <option value="" selected>Seleccione el tipo de mascota</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="nombreMascota" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombreMascota" name="nombre_mascota" placeholder="Ingrese el nombre de la mascota" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="edadMascota" class="form-label">Edad</label>
+                          <input type="number" class="form-control" id="edadMascota" name="edad" placeholder="Ingrese la edad de la mascota" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="tamanoMascota" class="form-label">Tamaño</label>
+                          <select class="form-select" id="tamanoMascota" name="tamano" required>
+                            <option value="" selected>Seleccione el tamaño</option>
+                            <option value="pequeno">Pequeño</option>
+                            <option value="mediano">Mediano</option>
+                            <option value="grande">Grande</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary" onclick="guardarDatosMascota()">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+<script>
+  // Función para enviar el formulario de Datos del Dueño
+  const guardarDatosDueno = () => {
+      const form = document.getElementById('datosDuenoForm');
+      const formData = new FormData(form);
+
+      fetch('/datos-usuario/guardar-dueno/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert(data.message); // Mensaje de éxito
+              $('#datosDuenoModal').modal('hide'); // Cierra el modal
+              form.reset(); // Limpia el formulario
+          } else {
+              alert('Error: ' + JSON.stringify(data.errors)); // Muestra errores
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
+  // Función para enviar el formulario de Datos de la Mascota
+  const guardarDatosMascota = () => {
+      const form = document.getElementById('datosMascotaForm');
+      const formData = new FormData(form);
+
+      fetch('/datos-mascota/guardar-mascota/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert(data.message); // Mensaje de éxito
+              $('#datosMascotaModal').modal('hide'); // Cierra el modal
+              form.reset(); // Limpia el formulario
+          } else {
+              alert('Error: ' + JSON.stringify(data.errors)); // Muestra errores
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  };
+</script>
+
+
 
 
               
