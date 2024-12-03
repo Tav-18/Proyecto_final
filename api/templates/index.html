@@ -449,47 +449,13 @@
 
   <!-- Botón flotante -->
   <!-- Botón flotante -->
-<a 
-href="#" 
-class="telegram-button" 
-id="chatButton" 
-aria-label="Abrir Chat">
-<iconify-icon icon="mdi:telegram" class="telegram-icon"></iconify-icon>
-</a>
 
 <!-- Ventana de chat -->
-<div class="chat-window" id="chatWindow">
-<div class="chat-header">
-  <h5>Asistente Virtual</h5>
-  <button class="close-chat" id="closeChatButton">&times;</button>
-</div>
-<div class="chat-body">
-  <p class="chat-message bot-message">¡Hola! ¿En qué puedo ayudarte hoy?</p>
-  <!-- Aquí se pueden agregar más mensajes dinámicamente -->
-</div>
-<div class="chat-footer">
-  <input type="text" class="chat-input" id="chatInput" placeholder="Escribe un mensaje..." />
-  <button class="send-button" id="sendButton">Enviar</button>
-</div>
-</div>
 
 
 
-<!-- JavaScript -->
-<script>
-const chatButton = document.getElementById('chatButton');
-const chatWindow = document.getElementById('chatWindow');
-const closeChatButton = document.getElementById('closeChatButton');
 
-// Mostrar/Ocultar ventana de chat
-chatButton.addEventListener('click', () => {
-  chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
-});
 
-closeChatButton.addEventListener('click', () => {
-  chatWindow.style.display = 'none';
-});
-</script>
 
 
 <!-------------------------------------------------------->
