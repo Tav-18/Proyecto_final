@@ -462,36 +462,39 @@
 
 
   
-  <section id="categories">
-    <div class="container my-3 py-5">
-      <div class="row my-5">
-        <div class="col text-center">
-          <a href="#" class="categories-item">
-            <img src="{% static 'images/chat.png' %}" alt="Foodies Icon" class="category-icon img-fluid">
-            <h5>Foodies</h5>
-          </a>
-        </div>
-        <div class="col text-center">
-          <a href="#" class="categories-item">
-            <img src="{% static 'images/icons/bird.png' %}" alt="Bird Shop Icon" class="category-icon img-fluid">
-            <h5>Bird Shop</h5>
-          </a>
-        </div>
-        <div class="col text-center">
-          <a href="#" class="categories-item">
-            <img src="{% static 'images/icons/dog.png' %}" alt="Dog Shop Icon" class="category-icon img-fluid">
-            <h5>Dog Shop</h5>
-          </a>
-        </div>
-        <div class="col text-center">
-          <a href="#" class="categories-item">
-            <img src="{% static 'images/icons/fish.png' %}" alt="Fish Shop Icon" class="category-icon img-fluid">
-            <h5>Fish Shop</h5>
-          </a>
-        </div>      
+<style>
+  .category-icon {
+    width: 100px; /* Ajusta el tamaño según necesites */
+    height: auto; /* Mantén las proporciones */
+    margin-bottom: 10px; /* Opcional, para dar espacio entre la imagen y el texto */
+  }
+</style>
+
+<section id="categories">
+  <div class="container my-3 py-5">
+    <div class="row my-5">
+      <div class="col text-center">
+        <a href="#" class="categories-item">
+          <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
+          <h5>Camara</h5>
+        </a>
+      </div>
+      <div class="col text-center">
+        <a href="#" class="categories-item">
+          <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
+          <h5>Informacion</h5>
+        </a>
+      </div>
+      <div class="col text-center">
+        <a href="#" class="categories-item">
+          <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
+          <h5>Chat</h5>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section id="banner" style="background: #F9F3EC;">
     <div class="container">
@@ -505,14 +508,8 @@
               </div>
               <div class="content-wrapper col-md-7 p-5 mb-5">
                 <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Best destination for <span class="text-primary">your
-                    pets</span>
+                <h2 class="banner-title display-1 fw-normal">Recomendacion: saca a pasear a tu perro almenos una vez por dia 
                 </h2>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                  shop now
-                  <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></a>
               </div>
 
             </div>
