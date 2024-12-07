@@ -496,69 +496,81 @@
 </section>
 
 
-  <section id="banner" style="background: #F9F3EC;">
-    <div class="container">
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
+<section id="banner" style="background: #F9F3EC;">
+  <div class="container">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
 
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img.png' %}" class="img-fluid">
-              </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Recomendacion: saca a pasear a tu perro almenos una vez por dia 
-                </h2>
-              </div>
-
+        <!-- Primer Slide -->
+        <div class="swiper-slide py-2"> <!-- Menor padding vertical -->
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;"> <!-- Controlar altura de la imagen -->
             </div>
-          </div>
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img3.png' %}" class="img-fluid">
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;"> <!-- Reducir tamaño de texto -->
+                Save 10 - 20 % off
               </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Best destination for <span class="text-primary">your
-                    pets</span>
-                </h2>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                  shop now
-                  <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></a>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img4.png' %}" class="img-fluid">
-              </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Best destination for <span class="text-primary">your
-                    pets</span>
-                </h2>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                  shop now
-                  <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></a>
-              </div>
-
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Recomendación: saca a pasear a tu perro al menos una vez por día
+              </h2>
             </div>
           </div>
         </div>
 
-        <div class="swiper-pagination mb-5"></div>
+        <!-- Segundo Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img3.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Save 10 - 20 % off
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;">
+                Best destination for <span class="text-primary">your pets</span>
+              </h2>
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 mt-3">
+                shop now
+                <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+                  <use xlink:href="#arrow-right"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tercer Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img4.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Save 10 - 20 % off
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;">
+                Best destination for <span class="text-primary">your pets</span>
+              </h2>
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 mt-3">
+                shop now
+                <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+                  <use xlink:href="#arrow-right"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
       </div>
+
+      <div class="swiper-pagination mb-3"></div> <!-- Menor margen inferior -->
     </div>
-  </section>
+  </div>
+</section>
+
 
 
 
