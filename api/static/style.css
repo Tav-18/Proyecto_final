@@ -678,38 +678,11 @@ Single Product section style start
 
 
 /*----------------------------------------------------*/
-/* Botón flotante */
-.telegram-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #0088cc;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
-}
-
-.telegram-icon {
-  font-size: 28px;
-}
-
-.telegram-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
 
 /* Ventana de chat */
 /* Ventana de chat */
 .chat-panel {
-  display: none; /* Ocultar el chat inicialmente */  
+  display: none; /* Ocultar inicialmente */
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -718,17 +691,13 @@ Single Product section style start
   background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 15px;
-  display: none; /* Ocultar inicialmente */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   overflow: hidden;
-  display: flex; /* Aseguramos que los elementos hijos se ajusten correctamente */
-  flex-direction: column; /* Permitir apilamiento vertical */
+  display: flex; /* Asegura que los elementos hijos se ajusten correctamente */
+  flex-direction: column; /* Apilamiento vertical */
   font-family: 'Arial', sans-serif;
-  
-  
 }
-
 
 /* Cabecera del chat */
 .chat-header {
@@ -765,9 +734,8 @@ Single Product section style start
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background: #f8f9fa;
+  background: #f8f9fa; /* Fondo gris claro */
 }
-
 
 /* Mensajes del chat */
 .chat-message {
@@ -785,7 +753,7 @@ Single Product section style start
   background: #e8f0fe; /* Azul claro */
   color: #333333;
   align-self: flex-start;
-  border-radius: 10px 10px 10px 0; /* Esquinas más redondeadas */
+  border-radius: 10px 10px 10px 0; /* Bordes redondeados */
 }
 
 /* Mensajes del usuario (derecha) */
@@ -793,7 +761,7 @@ Single Product section style start
   background: #007bff; /* Azul intenso */
   color: #ffffff;
   align-self: flex-end;
-  border-radius: 10px 10px 0 10px; /* Esquinas más redondeadas */
+  border-radius: 10px 10px 0 10px; /* Bordes redondeados */
 }
 
 /* Pie del chat */
@@ -832,3 +800,17 @@ Single Product section style start
 .chat-footer button:hover {
   background: #0056b3;
 }
+
+/* Ajustes generales */
+ul.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.options li {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+

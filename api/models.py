@@ -37,13 +37,13 @@ class DatosMascota(models.Model):
 from django.db import models
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=255)
-
-    class Meta:
-        db_table = "categoria"  # Nombre personalizado para la tabla en la base de datos
+    nombre = models.CharField(max_length=255, unique=True)  # Agrega unique=True para evitar duplicados
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        db_table = "categoria"
 
 
 class Pregunta(models.Model):
@@ -51,10 +51,12 @@ class Pregunta(models.Model):
     pregunta_texto = models.CharField(max_length=255)
 
     class Meta:
-        db_table = "pregunta"  # Nombre personalizado para la tabla en la base de datos
+        db_table = "pregunta"
+        unique_together = ("categoria", "pregunta_texto")  # Restricción de unicidad
 
     def __str__(self):
         return self.pregunta_texto
+
 
 
 class Respuesta(models.Model):
@@ -62,7 +64,9 @@ class Respuesta(models.Model):
     respuesta_texto = models.TextField()
 
     class Meta:
-        db_table = "respuesta"  # Nombre personalizado para la tabla en la base de datos
+        db_table = "respuesta"
+        unique_together = ("pregunta", "respuesta_texto")  # Restricción de unicidad
 
     def __str__(self):
         return self.respuesta_texto
+
