@@ -31,3 +31,38 @@ class DatosMascota(models.Model):
 
     def __str__(self):
         return f"{self.nombre_mascota} ({self.tipo_mascota})"  # Representación en texto del objeto
+
+
+
+from django.db import models
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "categoria"  # Nombre personalizado para la tabla en la base de datos
+
+    def __str__(self):
+        return self.nombre
+
+
+class Pregunta(models.Model):
+    categoria = models.ForeignKey(Categoria, related_name="preguntas", on_delete=models.CASCADE)
+    pregunta_texto = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "pregunta"  # Nombre personalizado para la tabla en la base de datos
+
+    def __str__(self):
+        return self.pregunta_texto
+
+
+class Respuesta(models.Model):
+    pregunta = models.ForeignKey(Pregunta, related_name="respuestas", on_delete=models.CASCADE)
+    respuesta_texto = models.TextField()
+
+    class Meta:
+        db_table = "respuesta"  # Nombre personalizado para la tabla en la base de datos
+
+    def __str__(self):
+        return self.respuesta_texto

@@ -464,10 +464,22 @@
   
 <style>
   .category-icon {
-    width: 100px; /* Ajusta el tamaño según necesites */
-    height: auto; /* Mantén las proporciones */
-    margin-bottom: 10px; /* Opcional, para dar espacio entre la imagen y el texto */
-  }
+  width: 100px; /* Controla el ancho de todos los íconos */
+  height: auto; /* Mantén las proporciones */
+  margin-bottom: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Opcional: Asegúrate de que todos los enlaces tengan estilos consistentes */
+.categories-item {
+  text-decoration: none; /* Elimina el subrayado en los enlaces */
+  color: #000; /* Define un color de texto por defecto */
+  transition: transform 0.2s ease; /* Efecto de escala al pasar el mouse */
+}
+
+.categories-item:hover {
+  transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
+}
+
 </style>
 
 <section id="categories">
@@ -486,7 +498,7 @@
         </a>
       </div>
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#" class="categories-item" onclick="toggleChatWindow()">
           <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
           <h5>Chat</h5>
         </a>
@@ -494,6 +506,84 @@
     </div>
   </div>
 </section>
+
+
+<div id="chat-panel" class="chat-panel">
+  <div class="chat-header">
+    <h5>Chat con IA</h5>
+    <button id="close-chat" class="btn-close" onclick="toggleChatWindow()">×</button>
+  </div>
+  <div id="chat-window" class="chat-body">
+    <!-- Mensajes de ejemplo -->
+    <div class="chat-message bot">¡Hola! ¿En qué puedo ayudarte hoy?</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="user-input" class="form-control" placeholder="Escribe un mensaje..." />
+    <button id="send-button" class="btn btn-primary">Enviar</button>
+  </div>
+</div>
+
+
+<script>
+// Función para alternar la visibilidad de la ventana del chat
+function toggleChatWindow() {
+  const chatPanel = document.getElementById("chat-panel");
+
+  // Alternar visibilidad
+  if (chatPanel.style.display === "none" || chatPanel.style.display === "") {
+    chatPanel.style.display = "flex"; // Mostrar el chat
+  } else {
+    chatPanel.style.display = "none"; // Ocultar el chat
+  }
+}
+
+// Función para enviar un mensaje
+function sendMessage() {
+  const userInput = document.getElementById("user-input");
+  const chatWindow = document.getElementById("chat-window");
+
+  if (userInput.value.trim() !== "") {
+    // Agregar mensaje del usuario (a la derecha)
+    const userMessage = document.createElement("div");
+    userMessage.className = "chat-message user";
+    userMessage.textContent = userInput.value;
+    chatWindow.appendChild(userMessage);
+
+    // Simular respuesta automática del chatbot (a la izquierda)
+    setTimeout(() => {
+      const botMessage = document.createElement("div");
+      botMessage.className = "chat-message bot";
+      botMessage.textContent = "¡Gracias por tu mensaje! Estoy aquí para ayudarte.";
+      chatWindow.appendChild(botMessage);
+
+      // Ajustar scroll
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }, 500);
+
+    // Limpiar input y ajustar scroll
+    userInput.value = "";
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+}
+
+// Enviar mensaje al presionar Enter
+document.getElementById("user-input").addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Evitar el salto de línea
+    sendMessage();
+  }
+});
+
+// Enviar mensaje al hacer clic en el botón "Enviar"
+document.getElementById("send-button").addEventListener("click", sendMessage);
+
+// Asegurar que el chat esté cerrado al cargar la página
+window.onload = function () {
+  document.getElementById("chat-panel").style.display = "none";
+};
+
+
+</script>
 
 
 <section id="banner" style="background: #F9F3EC;">
