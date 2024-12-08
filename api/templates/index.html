@@ -101,49 +101,6 @@
     </div>
   </div>
 
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-    <div class="offcanvas-header justify-content-center">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-circle pt-2">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Grey Hoodie</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Dog Food</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Soft Toy</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="fw-bold">Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-      </div>
-    </div>
-  </div>
-
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
     aria-labelledby="Search">
     <div class="offcanvas-header justify-content-center">
@@ -209,6 +166,15 @@
                       href="#" 
                       data-bs-toggle="modal" 
                       data-bs-target="#datosDuenoModal">
+                      Perfil
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      class="dropdown-item" 
+                      href="#" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#datosDuenoModal">
                       Datos del dueño
                     </a>
                   </li>
@@ -220,6 +186,16 @@
                       data-bs-target="#datosMascotaModal">
                       Datos mascota
                     </a>
+                  </li>
+                  <li>
+                    <a 
+                      class="dropdown-item" 
+                      href="#" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#datosDuenoModal">
+                      Cerrar sesión
+                    </a>
+                  </li>
           </div>
 
 
@@ -479,12 +455,11 @@
 .categories-item:hover {
   transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
 }
-
 </style>
 
 <section id="categories">
-  <div class="container my-3 py-5">
-    <div class="row my-5">
+  <div class="container my-3 py-4"> <!-- Ajusté py-5 a py-3 -->
+    <div class="row my-4"> <!-- Ajusté my-5 a my-3 -->
       <div class="col text-center">
         <a href="#" class="categories-item">
           <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
@@ -494,7 +469,7 @@
       <div class="col text-center">
         <a href="#" class="categories-item">
           <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
-          <h5>Informacion</h5>
+          <h5>Información</h5>
         </a>
       </div>
       <div class="col text-center">
@@ -508,14 +483,14 @@
 </section>
 
 
+
 <div id="chat-panel" class="chat-panel">
   <div class="chat-header">
-    <h5>Chat Con IA</h5>
+    <h5>PetChat</h5>
     <button id="close-chat" class="btn-close" onclick="toggleChatWindow()">×</button>
   </div>
   <div id="chat-window" class="chat-body">
     <!-- Mensajes de ejemplo -->
-    <div class="chat-message bot">¡Hola! ¿En qué puedo ayudarte hoy?</div>
   </div>
   <div class="chat-footer">
     <input type="text" id="user-input" class="form-control" placeholder="Escribe un mensaje..." />
@@ -529,6 +504,7 @@
 let chatWindow = document.getElementById("chat-window");
 let userInput = document.getElementById("user-input");
 let isWaitingForResponse = false; // Bandera para evitar múltiples mensajes mientras se espera respuesta
+let isAskingName = true; // Bandera para determinar si el chatbot está solicitando el nombre del usuario
 
 // Función para enviar un mensaje al backend
 function sendMessage() {
@@ -539,6 +515,13 @@ function sendMessage() {
   if (userMessage !== "") {
     appendMessage(userMessage, "user"); // Muestra el mensaje del usuario en el chat
     userInput.value = ""; // Limpia el campo de entrada
+
+    // Si el chatbot está solicitando el nombre
+    if (isAskingName) {
+      handleNameInput(userMessage); // Manejar el nombre ingresado por el usuario
+      return;
+    }
+
     isWaitingForResponse = true; // Activa el bloqueo para evitar múltiples mensajes
 
     // Muestra "Escribiendo..." mientras se espera la respuesta
@@ -546,19 +529,29 @@ function sendMessage() {
 
     // Realiza la solicitud al backend
     fetch(`/api/chatbot/?message=${encodeURIComponent(userMessage)}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
         appendMessage(data.bot_message, "bot"); // Muestra la respuesta del chatbot
         isWaitingForResponse = false; // Desactiva el bloqueo
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
         removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
-        appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+        appendMessage(
+          "Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.",
+          "bot"
+        );
         isWaitingForResponse = false; // Desactiva el bloqueo
       });
   }
+}
+
+// Función para manejar el nombre ingresado por el usuario
+function handleNameInput(name) {
+  const personalizedMessage = `Hola ${name}, ¿Sobre qué necesitas información? 1. Perros 2. Gatos 3. Alimentos Tóxicos 4. Cuidados Generales`;
+  appendMessage(personalizedMessage, "bot");
+  isAskingName = false; // Cambiar bandera porque ya se obtuvo el nombre
 }
 
 // Función para mostrar un mensaje en el chat
@@ -588,9 +581,10 @@ userInput.addEventListener("keypress", function (event) {
   }
 });
 
-// Inicializa el chat cerrado al cargar la página
+// Inicializa el chat preguntando por el nombre del usuario
 window.onload = function () {
   document.getElementById("chat-panel").style.display = "none"; // Oculta el chat por defecto
+  appendMessage("¡Hola! ¿Me puedes dar tu nombre?", "bot"); // Primera pregunta
 };
 
 // Función para alternar la visibilidad del chat
@@ -604,7 +598,6 @@ function toggleChatWindow() {
     chatPanel.style.display = "none"; // Ocultar el chat
   }
 }
-
 
 </script>
 
