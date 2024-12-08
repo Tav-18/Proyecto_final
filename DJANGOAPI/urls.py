@@ -26,6 +26,12 @@ from api.datos_usu.datos_usu_views import guardar_datos_dueno
 from api.chatbot.chatbot_views import chatbot_view
 
 
+
+    
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login_views, name='login'),
@@ -36,5 +42,6 @@ urlpatterns = [
     path('guardar-mascota/', guardar_datos_mascota, name='guardar_mascota'),
     path('datos-usuario/', include('api.datos_usu.urls')),
     path("api/chatbot/", chatbot_view, name="chatbot_view"),
+    
 ]
 

@@ -700,11 +700,12 @@ Single Product section style start
 }
 
 /* Cabecera del chat */
+/* Cabecera del chat */
 .chat-header {
-  background: #007bff;
-  color: #ffffff;
+  background: #28a745; /* Color verde de fondo */
+  color: #ffffff; /* Cambiar el color del texto a blanco */
   padding: 12px 15px;
-  font-size: 16px;
+  font-size: 18px; /* Tamaño del texto */
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -714,19 +715,21 @@ Single Product section style start
 
 .chat-header h5 {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px; /* Ajustar tamaño del texto */
+  color: #ffffff; /* Texto blanco */
 }
+
 
 .btn-close {
   background: none;
   border: none;
-  color: #ffffff;
-  font-size: 20px;
+  color: #ffffff; /* Texto blanco */
+  font-size: 24px; /* Tamaño más grande para la X */
   cursor: pointer;
 }
 
 .btn-close:hover {
-  color: #ffcccc;
+  color: #ffcccc; /* Cambia a un color más claro al pasar el cursor */
 }
 
 /* Cuerpo del chat */
@@ -757,12 +760,19 @@ Single Product section style start
 }
 
 /* Mensajes del usuario (derecha) */
+/* Mensajes del usuario (derecha) */
 .chat-message.user {
-  background: #007bff; /* Azul intenso */
+  background: #5ed57a; /* Color verde */
   color: #ffffff;
-  align-self: flex-end;
-  border-radius: 10px 10px 0 10px; /* Bordes redondeados */
+  align-self: flex-end; /* Alineación al lado derecho */
+  border-radius: 10px 10px 0 10px; /* Esquinas redondeadas */
+  max-width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left; /* Alineación del texto dentro del mensaje */
+  margin-left: auto; /* Empuja el mensaje hacia el lado derecho */
 }
+
 
 /* Pie del chat */
 .chat-footer {
@@ -812,5 +822,33 @@ ul.options li {
   margin: 5px 0;
   font-size: 14px;
   color: #333;
+}
+
+.user-icon {
+  width: 100px; /* Ajusta el tamaño según lo necesites */
+  height: 100px; /* Mantén las proporciones cuadradas */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
+}
+
+.custom-bg {
+  background-color: #ffffff; /* Cambia al color que desees */
+  width: 100%; /* Asegura que cubra todo el ancho */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Ajusta el espacio si es necesario */
+}
+
+/* Separación para el logotipo */
+.logo-container {
+  padding-left: 80px; /* Ajusta según el espacio deseado */
+}
+
+.logo {
+  max-height: 150px; /* Ajusta el tamaño del logotipo si es necesario */
+}
+
+/* Separación para el ícono del usuario */
+.user-icon-container {
+  padding-right: 80px; /* Ajusta según el espacio deseado */
 }
 
