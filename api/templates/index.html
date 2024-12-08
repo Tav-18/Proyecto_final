@@ -491,106 +491,131 @@
 
 
 <script>
-// Variables principales
-let chatWindow = document.getElementById("chat-window");
-let userInput = document.getElementById("user-input");
-let isWaitingForResponse = false; // Bandera para evitar múltiples mensajes mientras se espera respuesta
-let isAskingName = true; // Bandera para determinar si el chatbot está solicitando el nombre del usuario
-
-// Función para enviar un mensaje al backend
-function sendMessage() {
-  if (isWaitingForResponse) return; // Bloquea si el chatbot está procesando una solicitud
-
-  const userMessage = userInput.value.trim(); // Obtiene el mensaje del usuario
-
-  if (userMessage !== "") {
-    appendMessage(userMessage, "user"); // Muestra el mensaje del usuario en el chat
-    userInput.value = ""; // Limpia el campo de entrada
-
-    // Si el chatbot está solicitando el nombre
-    if (isAskingName) {
-      handleNameInput(userMessage); // Manejar el nombre ingresado por el usuario
-      return;
+  // Variables principales
+  let chatWindow = document.getElementById("chat-window");
+  let userInput = document.getElementById("user-input");
+  let isWaitingForResponse = false; // Bandera para evitar múltiples mensajes mientras se espera respuesta
+  let isAskingName = true; // Bandera para determinar si el chatbot está solicitando el nombre del usuario
+  let userName = ""; // Almacenar el nombre del usuario
+  
+  // Función para enviar un mensaje al backend
+  function sendMessage() {
+    if (isWaitingForResponse) return; // Bloquea si el chatbot está procesando una solicitud
+  
+    const userMessage = userInput.value.trim(); // Obtiene el mensaje del usuario
+  
+    if (userMessage !== "") {
+      appendMessage(userMessage, "user"); // Muestra el mensaje del usuario en el chat
+      userInput.value = ""; // Limpia el campo de entrada
+  
+      // Si el chatbot está solicitando el nombre
+      if (isAskingName) {
+        handleNameInput(userMessage); // Manejar el nombre ingresado por el usuario
+        return;
+      }
+  
+      isWaitingForResponse = true; // Activa el bloqueo para evitar múltiples mensajes
+  
+      // Muestra "Escribiendo..." mientras se espera la respuesta
+      appendMessage("Escribiendo...", "bot", true);
+  
+      // Realiza la solicitud al backend
+      fetch(`/api/chatbot/?message=${encodeURIComponent(userMessage)}`)
+        .then(response => response.json())
+        .then(data => {
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
+          appendMessage(data.bot_message, "bot"); // Muestra la respuesta del chatbot
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
+          appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        });
     }
-
-    isWaitingForResponse = true; // Activa el bloqueo para evitar múltiples mensajes
-
-    // Muestra "Escribiendo..." mientras se espera la respuesta
-    appendMessage("Escribiendo...", "bot", true);
-
-    // Realiza la solicitud al backend
-    fetch(`/api/chatbot/?message=${encodeURIComponent(userMessage)}`)
-      .then((response) => response.json())
-      .then((data) => {
+  }
+  
+  // Función para manejar el nombre ingresado por el usuario
+  function handleNameInput(name) {
+    userName = name; // Almacena el nombre del usuario
+    appendMessage("Escribiendo...", "bot", true); // Muestra "Escribiendo..." mientras se obtiene la respuesta
+  
+    // Realiza una solicitud al backend para obtener las categorías
+    fetch(`/api/chatbot/?message=${encodeURIComponent(name)}`)
+      .then(response => response.json())
+      .then(data => {
         removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
-        appendMessage(data.bot_message, "bot"); // Muestra la respuesta del chatbot
-        isWaitingForResponse = false; // Desactiva el bloqueo
+        const personalizedMessage = `Hola ${userName}, ${data.bot_message}`; // Personaliza el mensaje con el nombre
+        appendMessage(personalizedMessage, "bot"); // Muestra el mensaje con las categorías
+        isAskingName = false; // Cambiar bandera porque ya se obtuvo el nombre
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Error:", error);
         removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
-        appendMessage(
-          "Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.",
-          "bot"
-        );
-        isWaitingForResponse = false; // Desactiva el bloqueo
+        appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
       });
   }
-}
-
-// Función para manejar el nombre ingresado por el usuario
-function handleNameInput(name) {
-  const personalizedMessage = `Hola ${name}, ¿Sobre qué necesitas información? 1. Perros 2. Gatos 3. Alimentos Tóxicos 4. Cuidados Generales`;
-  appendMessage(personalizedMessage, "bot");
-  isAskingName = false; // Cambiar bandera porque ya se obtuvo el nombre
-}
-
-// Función para mostrar un mensaje en el chat
-function appendMessage(message, sender, isTemporary = false) {
-  const messageElement = document.createElement("div");
-  messageElement.className = `chat-message ${sender}`;
-  if (isTemporary) messageElement.classList.add("typing"); // Clase para mensajes temporales
-  messageElement.textContent = message;
-  chatWindow.appendChild(messageElement);
-  chatWindow.scrollTop = chatWindow.scrollHeight; // Desplaza automáticamente hacia abajo
-}
-
-// Función para eliminar mensajes temporales como "Escribiendo..."
-function removeTemporaryMessage() {
-  const typingMessage = document.querySelector(".typing");
-  if (typingMessage) typingMessage.remove();
-}
-
-// Evento para manejar el clic en el botón "Enviar"
-document.getElementById("send-button").addEventListener("click", sendMessage);
-
-// Evento para manejar el envío con la tecla Enter
-userInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); // Evita el salto de línea
-    sendMessage(); // Envía el mensaje
+  
+  // Función para mostrar un mensaje en el chat
+  function appendMessage(message, sender, isTemporary = false) {
+    const messageElement = document.createElement("div");
+    messageElement.className = `chat-message ${sender}`;
+    if (isTemporary) messageElement.classList.add("typing"); // Clase para mensajes temporales
+  
+    // Convierte los saltos de línea (\n) en etiquetas <br> para el HTML
+    const formattedMessage = message.split("\n").join("<br>");
+    messageElement.innerHTML = formattedMessage;
+  
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Desplaza automáticamente hacia abajo
   }
-});
-
-// Inicializa el chat preguntando por el nombre del usuario
-window.onload = function () {
-  document.getElementById("chat-panel").style.display = "none"; // Oculta el chat por defecto
-  appendMessage("¡Hola! ¿Me puedes dar tu nombre?", "bot"); // Primera pregunta
-};
-
-// Función para alternar la visibilidad del chat
-function toggleChatWindow() {
-  const chatPanel = document.getElementById("chat-panel");
-
-  // Alterna entre mostrar y ocultar el chat
-  if (chatPanel.style.display === "none" || chatPanel.style.display === "") {
-    chatPanel.style.display = "flex"; // Mostrar el chat
-  } else {
-    chatPanel.style.display = "none"; // Ocultar el chat
+  
+  // Función para eliminar mensajes temporales como "Escribiendo..."
+  function removeTemporaryMessage() {
+    const typingMessage = document.querySelector(".typing");
+    if (typingMessage) typingMessage.remove();
   }
-}
+  
+  // Evento para manejar el clic en el botón "Enviar"
+  document.getElementById("send-button").addEventListener("click", sendMessage);
+  
+  // Evento para manejar el envío con la tecla Enter
+  userInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Evita el salto de línea
+      sendMessage(); // Envía el mensaje
+    }
+  });
+  
+  // Inicializa el chat preguntando por el nombre del usuario
+  window.onload = function () {
+    document.getElementById("chat-panel").style.display = "none"; // Oculta el chat por defecto
+    appendMessage("¡Hola! ¿Me puedes dar tu nombre?", "bot"); // Primera pregunta
+  };
+  
+  // Función para alternar la visibilidad del chat
+  function toggleChatWindow() {
+    const chatPanel = document.getElementById("chat-panel");
+  
+    // Alterna entre mostrar y ocultar el chat
+    if (chatPanel.style.display === "none" || chatPanel.style.display === "") {
+      chatPanel.style.display = "flex"; // Mostrar el chat
+    } else {
+      chatPanel.style.display = "none"; // Ocultar el chat
+    }
+  }
+  </script>
+  
 
-</script>
+
+
+
+
+
+
+
+
 
 
 <section id="banner" style="background: #F9F3EC;">
@@ -606,7 +631,7 @@ function toggleChatWindow() {
             </div>
             <div class="content-wrapper col-md-7 p-3 mb-3">
               <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;"> <!-- Reducir tamaño de texto -->
-                Save 10 - 20 % off
+                Recomendación:
               </div>
               <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
                 Recomendación: saca a pasear a tu perro al menos una vez por día

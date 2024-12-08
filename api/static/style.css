@@ -745,11 +745,12 @@ Single Product section style start
   margin-bottom: 10px;
   padding: 10px 15px;
   border-radius: 10px;
-  max-width: 70%;
+  max-width: 90%; /* Ajusta si es necesario */
   font-size: 14px;
   line-height: 1.4;
   word-wrap: break-word;
 }
+
 
 /* Mensajes del chatbot (izquierda) */
 .chat-message.bot {
@@ -851,4 +852,27 @@ ul.options li {
 .user-icon-container {
   padding-right: 80px; /* Ajusta según el espacio deseado */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
