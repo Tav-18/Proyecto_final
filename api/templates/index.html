@@ -452,11 +452,6 @@
 
 <!-- Ventana de chat -->
 
-
-
-
-
-
 <!-- Estilo para las categorías -->
 <style>
   .category-icon {
@@ -470,6 +465,7 @@
     margin-top: 20px;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+    text-align: center; /* Centra el contenido del modal */
   }
 
   .dynamic-content img {
@@ -477,6 +473,9 @@
     height: auto;
     margin-top: 15px;
     border-radius: 5px;
+    display: block; /* Garantiza que el margen automático funcione */
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
 
@@ -486,19 +485,19 @@
     <div class="row my-5">
       <div class="col text-center">
         <a href="#">
-          <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
+          <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid mx-auto d-block">
           <h5>Cámara</h5>
         </a>
       </div>
       <div class="col text-center">
         <a href="#" id="infoButton">
-          <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
+          <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid mx-auto d-block">
           <h5>Primeros Auxilios</h5>
         </a>
       </div>
       <div class="col text-center">
         <a href="#">
-          <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
+          <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid mx-auto d-block">
           <h5>Chat</h5>
         </a>
       </div>
