@@ -876,3 +876,97 @@ ul.options li {
 
 
 
+/* General: Ajustar el contenedor del logo y del ícono */
+.logo-container,
+.user-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajustes específicos del logo */
+.responsive-logo {
+  max-width: 120px; /* Tamaño estándar */
+  height: auto;
+  margin-left: auto;
+}
+
+/* Ajustes específicos del ícono de usuario */
+.responsive-user-icon {
+  max-width: 60px; /* Tamaño estándar */
+  height: auto;
+}
+
+/* Media Queries: Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  /* Reduce tamaños para móviles */
+  .responsive-logo {
+    max-width: 100px;
+  }
+
+  .responsive-user-icon {
+    max-width: 50px;
+  }
+
+  /* Ajusta la alineación en móviles */
+  .logo-container,
+  .user-icon-container {
+    flex: 1; /* Permite ajustar automáticamente el espacio */
+  }
+
+  /* Elimina el espaciador central */
+  .col.d-none.d-lg-block {
+    display: none;
+  }
+
+  /* Ajustar márgenes */
+  .logo-container {
+    margin-right: auto;
+  }
+
+  .user-icon-container {
+    margin-left: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Tamaño del logo */
+/* Tamaño general del logo */
+.responsive-logo {
+  max-width: 250px;
+  height: auto;
+  margin-left: auto;
+}
+
+/* Aumentar el tamaño del logo en pantallas grandes */
+@media (min-width: 992px) {
+  .responsive-logo {
+    max-width: 280px; /* Aumenta el tamaño para pantallas grandes */
+  }
+}
+
+
+/* Tamaño del ícono de usuario */
+.responsive-user-icon {
+  max-width: 80px; /* Tamaño proporcionado */
+  height: auto;
+}
+
+/* Media Queries para pantallas móviles */
+@media (max-width: 576px) {
+  .responsive-logo {
+    max-width: 120px; /* Reduce el tamaño en móviles */
+  }
+
+  .responsive-user-icon {
+    max-width: 60px; /* Reduce el tamaño del ícono de usuario en móviles */
+  }
+}
