@@ -1,0 +1,701 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PetSmart</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+</head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
+  rel="stylesheet">
+
+</head>
+
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+          d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
+    aria-labelledby="Search">
+    <div class="offcanvas-header justify-content-center">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+      <div class="order-md-last">
+        <h4 class="text-primary text-uppercase mb-3">
+          Search
+        </h4>
+        <div class="search-bar border rounded-2 border-dark-subtle">
+          <form id="search-form" class="text-center d-flex align-items-center" action="" method="">
+            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search Here" />
+            <iconify-icon icon="tabler:search" class="fs-4 me-3"></iconify-icon>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container-fluid py-2 custom-bg">
+      <div class="row py-4 pb-0 pb-sm-4 align-items-center">
+        <!-- Logotipo -->
+        <div class="col-sm-4 col-lg-3 text-center text-sm-start logo-container">
+          <div class="main-logo">
+            <a href="index.html">
+              <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid logo">
+            </a>
+          </div>
+        </div>
+    
+        <!-- Espaciador para centrar y acomodar las columnas -->
+        <div class="col"></div>
+    
+        <!-- Ícono de usuario alineado a la derecha con opciones -->
+        <div class="col-auto d-flex justify-content-end align-items-center user-icon-container">
+          <div class="dropdown">
+            <a 
+              class="nav-link mx-3 dropdown-toggle" 
+              href="#" 
+              id="dropdownMenuButton" 
+              role="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              <img src="{% static 'images/usuario.png' %}" alt="Usuario" class="user-icon">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a 
+                  class="dropdown-item" 
+                  href="#" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#perfilModal">
+                  Perfil
+                </a>
+              </li>
+              <li>
+                <a 
+                  class="dropdown-item" 
+                  href="#" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#datosDuenoModal">
+                  Datos del dueño
+                </a>
+              </li>
+              <li>
+                <a 
+                  class="dropdown-item" 
+                  href="#" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#datosMascotaModal">
+                  Datos mascota
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a 
+                  class="dropdown-item" 
+                  href="login.html">
+                  Cerrar sesión
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="container-fluid">
+      <hr class="m-0">
+    </div>
+
+    <div class="container">
+      <nav class="main-menu d-flex navbar navbar-expand-lg ">
+
+        <div class="d-flex d-lg-none align-items-end mt-3">
+          <ul class="d-flex justify-content-end list-unstyled m-0">
+            <li>
+              <a href="account.html" class="mx-3">
+                <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
+              </a>
+            </li>
+            <li>
+              <a href="wishlist.html" class="mx-3">
+                <iconify-icon icon="mdi:heart" class="fs-4"></iconify-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart">
+                <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+                <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
+                  03
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
+                aria-controls="offcanvasSearch">
+                <iconify-icon icon="tabler:search" class="fs-4"></iconify-icon>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+          <div class="offcanvas-header justify-content-center">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body justify-content-between">
+            <div class="d-none d-lg-flex align-items-end">
+              <ul class="d-flex justify-content-end list-unstyled m-0">
+
+              <!-- ***************************-->
+              <li class="nav-item dropdown">
+                
+                  </li>
+                </ul>
+              </li>
+              
+              <!-- Modal para Datos del Dueño -->
+              <div class="modal fade" id="datosDuenoModal" tabindex="-1" aria-labelledby="datosDuenoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="datosDuenoModalLabel">Datos del Dueño</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="datosDuenoForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="apellido" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="telefono" class="form-label">Teléfono</label>
+                          <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="numMascotas" class="form-label">Número de Mascotas</label>
+                          <input type="number" class="form-control" id="numMascotas" name="num_mascotas" placeholder="Ingrese el número de mascotas" required>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary" onclick="guardarDatosDueno()">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal para Datos de la Mascota -->
+              <div class="modal fade" id="datosMascotaModal" tabindex="-1" aria-labelledby="datosMascotaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="datosMascotaModalLabel">Datos de la Mascota</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="datosMascotaForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="tipoMascota" class="form-label">Tipo de Mascota</label>
+                          <select class="form-select" id="tipoMascota" name="tipo_mascota" required>
+                            <option value="" selected>Seleccione el tipo de mascota</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="nombreMascota" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombreMascota" name="nombre_mascota" placeholder="Ingrese el nombre de la mascota" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="edadMascota" class="form-label">Edad</label>
+                          <input type="number" class="form-control" id="edadMascota" name="edad" placeholder="Ingrese la edad de la mascota" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="tamanoMascota" class="form-label">Tamaño</label>
+                          <select class="form-select" id="tamanoMascota" name="tamano" required>
+                            <option value="" selected>Seleccione el tamaño</option>
+                            <option value="pequeno">Pequeño</option>
+                            <option value="mediano">Mediano</option>
+                            <option value="grande">Grande</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary" onclick="guardarDatosMascota()">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+<script>
+  // Función para enviar el formulario de Datos del Dueño
+  const guardarDatosDueno = () => {
+      const form = document.getElementById('datosDuenoForm');
+      const formData = new FormData(form);
+
+      fetch('/datos-usuario/guardar-dueno/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert(data.message); // Mensaje de éxito
+              $('#datosDuenoModal').modal('hide'); // Cierra el modal
+              form.reset(); // Limpia el formulario
+          } else {
+              alert('Error: ' + JSON.stringify(data.errors)); // Muestra errores
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
+  // Función para enviar el formulario de Datos de la Mascota
+  const guardarDatosMascota = () => {
+      const form = document.getElementById('datosMascotaForm');
+      const formData = new FormData(form);
+
+      fetch('/datos-mascota/guardar-mascota/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert(data.message); // Mensaje de éxito
+              $('#datosMascotaModal').modal('hide'); // Cierra el modal
+              form.reset(); // Limpia el formulario
+          } else {
+              alert('Error: ' + JSON.stringify(data.errors)); // Muestra errores
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  };
+</script>
+
+
+
+
+              
+              <!--*************************************************-->
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+
+
+    </div>
+  </header>
+
+  <!-- Botón flotante -->
+  <!-- Botón flotante -->
+
+<!-- Ventana de chat -->
+
+
+
+
+
+
+
+<!-------------------------------------------------------->
+
+
+  
+<style>
+  .category-icon {
+  width: 100px; /* Controla el ancho de todos los íconos */
+  height: auto; /* Mantén las proporciones */
+  margin-bottom: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Opcional: Asegúrate de que todos los enlaces tengan estilos consistentes */
+.categories-item {
+  text-decoration: none; /* Elimina el subrayado en los enlaces */
+  color: #000; /* Define un color de texto por defecto */
+  transition: transform 0.2s ease; /* Efecto de escala al pasar el mouse */
+}
+
+.categories-item:hover {
+  transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
+}
+</style>
+
+<section id="categories">
+  <div class="container my-3 py-4"> <!-- Ajusté py-5 a py-3 -->
+    <div class="row my-4"> <!-- Ajusté my-5 a my-3 -->
+      <div class="col text-center">
+        <a href="#" class="categories-item">
+          <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
+          <h5>Camara</h5>
+        </a>
+      </div>
+      <div class="col text-center">
+        <a href="#" class="categories-item">
+          <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
+          <h5>Información</h5>
+        </a>
+      </div>
+      <div class="col text-center">
+        <a href="#" class="categories-item" onclick="toggleChatWindow()">
+          <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
+          <h5>Chat</h5>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div id="chat-panel" class="chat-panel">
+  <div class="chat-header">
+    <h5>PetChat</h5>
+    <button id="close-chat" class="btn-close" onclick="toggleChatWindow()">X</button>
+  </div>
+  <div id="chat-window" class="chat-body">
+    <!-- Mensajes de ejemplo -->
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="user-input" class="form-control" placeholder="Escribe un mensaje..." />
+    <button id="send-button" class="btn btn-primary">Enviar</button>
+  </div>
+</div>
+
+
+<script>
+  // Variables principales
+  let chatWindow = document.getElementById("chat-window");
+  let userInput = document.getElementById("user-input");
+  let isWaitingForResponse = false; // Bandera para evitar múltiples mensajes mientras se espera respuesta
+  let isAskingName = true; // Bandera para determinar si el chatbot está solicitando el nombre del usuario
+  let userName = ""; // Almacenar el nombre del usuario
+  
+  // Función para enviar un mensaje al backend
+  function sendMessage() {
+    if (isWaitingForResponse) return; // Bloquea si el chatbot está procesando una solicitud
+  
+    const userMessage = userInput.value.trim(); // Obtiene el mensaje del usuario
+  
+    if (userMessage !== "") {
+      appendMessage(userMessage, "user"); // Muestra el mensaje del usuario en el chat
+      userInput.value = ""; // Limpia el campo de entrada
+  
+      // Si el chatbot está solicitando el nombre
+      if (isAskingName) {
+        handleNameInput(userMessage); // Manejar el nombre ingresado por el usuario
+        return;
+      }
+  
+      isWaitingForResponse = true; // Activa el bloqueo para evitar múltiples mensajes
+  
+      // Muestra "Escribiendo..." mientras se espera la respuesta
+      appendMessage("Escribiendo...", "bot", true);
+  
+      // Realiza la solicitud al backend
+      fetch(`/api/chatbot/?message=${encodeURIComponent(userMessage)}`)
+        .then(response => response.json())
+        .then(data => {
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
+          appendMessage(data.bot_message, "bot"); // Muestra la respuesta del chatbot
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
+          appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        });
+    }
+  }
+  
+  // Función para manejar el nombre ingresado por el usuario
+  function handleNameInput(name) {
+    userName = name; // Almacena el nombre del usuario
+    appendMessage("Escribiendo...", "bot", true); // Muestra "Escribiendo..." mientras se obtiene la respuesta
+  
+    // Realiza una solicitud al backend para obtener las categorías
+    fetch(`/api/chatbot/?message=${encodeURIComponent(name)}`)
+      .then(response => response.json())
+      .then(data => {
+        removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
+        const personalizedMessage = `Hola ${userName}, ${data.bot_message}`; // Personaliza el mensaje con el nombre
+        appendMessage(personalizedMessage, "bot"); // Muestra el mensaje con las categorías
+        isAskingName = false; // Cambiar bandera porque ya se obtuvo el nombre
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
+        appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+      });
+  }
+  
+  // Función para mostrar un mensaje en el chat
+  function appendMessage(message, sender, isTemporary = false) {
+    const messageElement = document.createElement("div");
+    messageElement.className = `chat-message ${sender}`;
+    if (isTemporary) messageElement.classList.add("typing"); // Clase para mensajes temporales
+  
+    // Convierte los saltos de línea (\n) en etiquetas <br> para el HTML
+    const formattedMessage = message.split("\n").join("<br>");
+    messageElement.innerHTML = formattedMessage;
+  
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Desplaza automáticamente hacia abajo
+  }
+  
+  // Función para eliminar mensajes temporales como "Escribiendo..."
+  function removeTemporaryMessage() {
+    const typingMessage = document.querySelector(".typing");
+    if (typingMessage) typingMessage.remove();
+  }
+  
+  // Evento para manejar el clic en el botón "Enviar"
+  document.getElementById("send-button").addEventListener("click", sendMessage);
+  
+  // Evento para manejar el envío con la tecla Enter
+  userInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Evita el salto de línea
+      sendMessage(); // Envía el mensaje
+    }
+  });
+  
+  // Inicializa el chat preguntando por el nombre del usuario
+  window.onload = function () {
+    document.getElementById("chat-panel").style.display = "none"; // Oculta el chat por defecto
+    appendMessage("¡Hola! ¿Me puedes dar tu nombre?", "bot"); // Primera pregunta
+  };
+  
+  // Función para alternar la visibilidad del chat
+  function toggleChatWindow() {
+    const chatPanel = document.getElementById("chat-panel");
+  
+    // Alterna entre mostrar y ocultar el chat
+    if (chatPanel.style.display === "none" || chatPanel.style.display === "") {
+      chatPanel.style.display = "flex"; // Mostrar el chat
+    } else {
+      chatPanel.style.display = "none"; // Ocultar el chat
+    }
+  }
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<section id="banner" style="background: #F9F3EC;">
+  <div class="container">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Primer Slide -->
+        <div class="swiper-slide py-2"> <!-- Menor padding vertical -->
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;"> <!-- Controlar altura de la imagen -->
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;"> <!-- Reducir tamaño de texto -->
+                Recomendación:
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Establece una rutina diaria para tu perro que incluya horarios regulares de alimentación, paseos y tiempo de juego. Esto les proporciona estabilidad emocional y mejora su comportamiento
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segundo Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img3.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Recomendación
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Proporciona un ambiente enriquecido con rascadores, juguetes interactivos y lugares elevados para trepar. Esto estimula su instinto natural y previene el estrés.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tercer Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/revision-medica.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Recomendación
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Realiza chequeos veterinarios regulares cada 6 meses para asegurarte de que tu mascota está en óptimas condiciones de salud.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination mb-3"></div> <!-- Menor margen inferior -->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+  
+
+  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'js/plugins.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+
+</html>
