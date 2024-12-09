@@ -27,12 +27,6 @@ from api.datos_usu.datos_usu_views import guardar_datos_dueno
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login_views, name='login'),
-    path('register/', register_views, name='register'),
-    path('forgot/', forgot_views, name='forgot'),
-    path('home/', home_views, name='home'),
-    path('guardar-dueno/', guardar_datos_dueno, name='guardar_dueno'),
-    path('guardar-mascota/', guardar_datos_mascota, name='guardar_mascota'),
-    path('datos-usuario/', include('api.datos_usu.urls')),
+    path('', home_views, name='home'),
 ]
 

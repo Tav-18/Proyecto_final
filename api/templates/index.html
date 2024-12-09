@@ -457,36 +457,47 @@
 
 
 
-
-<!-------------------------------------------------------->
-
-
-  
+<!-- Estilo para las categorías -->
 <style>
   .category-icon {
     width: 100px; /* Ajusta el tamaño según necesites */
     height: auto; /* Mantén las proporciones */
-    margin-bottom: 10px; /* Opcional, para dar espacio entre la imagen y el texto */
+    margin-bottom: 10px; /* Espaciado entre la imagen y el texto */
+  }
+
+  .dynamic-content {
+    display: none;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+
+  .dynamic-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 5px;
   }
 </style>
 
+<!-- Sección de categorías -->
 <section id="categories">
   <div class="container my-3 py-5">
     <div class="row my-5">
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#">
           <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
-          <h5>Camara</h5>
+          <h5>Cámara</h5>
         </a>
       </div>
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#" id="infoButton">
           <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
-          <h5>Informacion</h5>
+          <h5>Primeros Auxilios</h5>
         </a>
       </div>
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#">
           <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
           <h5>Chat</h5>
         </a>
@@ -494,6 +505,85 @@
     </div>
   </div>
 </section>
+
+<!-- Modal Interactivo -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Primeros Auxilios para Mascotas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 id="modalHeaderText">Selecciona una emergencia:</h6>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="chokingBtn" data-img-url="{% static 'images/atragantamiento.jpg' %}">Atragantamiento</button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="bleedingBtn" data-img-url="{% static 'images/hemorragias.jpg' %}">Hemorragias</button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="poisoningBtn" data-img-url="{% static 'images/envenenamiento.jpg' %}">Envenenamiento</button>
+          </li>
+        </ul>
+        <div id="dynamicContent" class="dynamic-content">
+          <p id="dynamicText">Selecciona una categoría para mostrar información.</p>
+          <img id="dynamicImage" src="" alt="Imagen ilustrativa">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script para manejar el modal e interacciones -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const infoModal = new bootstrap.Modal(document.getElementById('infoModal'));
+    const dynamicContent = document.getElementById('dynamicContent');
+    const dynamicText = document.getElementById('dynamicText');
+    const dynamicImage = document.getElementById('dynamicImage');
+
+    // Botón para abrir el modal de Primeros Auxilios
+    const infoButton = document.getElementById('infoButton');
+
+    // Opciones dentro del modal
+    const chokingBtn = document.getElementById('chokingBtn');
+    const bleedingBtn = document.getElementById('bleedingBtn');
+    const poisoningBtn = document.getElementById('poisoningBtn');
+
+    // Abrir el modal para Primeros Auxilios
+    infoButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      dynamicContent.style.display = 'none'; // Ocultar contenido dinámico por defecto
+      infoModal.show();
+    });
+
+    // Opciones de Primeros Auxilios
+    chokingBtn.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Si tu mascota está atragantándose, intenta retirar el objeto con cuidado. Si no puedes, realiza la maniobra de Heimlich.';
+      dynamicImage.src = chokingBtn.getAttribute('data-img-url'); // Obtén la URL del atributo
+    });
+
+    bleedingBtn.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Para detener una hemorragia, aplica presión directa con una gasa o paño limpio sobre la herida.';
+      dynamicImage.src = bleedingBtn.getAttribute('data-img-url'); // Obtén la URL del atributo
+    });
+
+    poisoningBtn.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Si tu mascota ha ingerido algo tóxico, contacta al veterinario inmediatamente.';
+      dynamicImage.src = poisoningBtn.getAttribute('data-img-url'); // Obtén la URL del atributo
+    });
+  });
+</script>
+
+
 
 
   <section id="banner" style="background: #F9F3EC;">
@@ -569,8 +659,8 @@
   <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+  crossorigin="anonymous"></script>
   <script src="{% static 'js/plugins.js' %}"></script>
   <script src="{% static 'js/script.js' %}"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

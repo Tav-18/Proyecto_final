@@ -1,7 +1,12 @@
 (function($) {
 
   "use strict";
-
+  document.getElementById('info-button').addEventListener('click', function (event) {
+    event.preventDefault();
+    const infoModal = new bootstrap.Modal(document.getElementById('infoModal'));
+    infoModal.show();
+  });
+  
   var initPreloader = function() {
     $(document).ready(function($) {
     var Body = $('body');
