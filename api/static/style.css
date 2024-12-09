@@ -678,124 +678,295 @@ Single Product section style start
 
 
 /*----------------------------------------------------*/
-/* Botón flotante */
-.telegram-button {
+
+/* Ventana de chat */
+/* Ventana de chat */
+.chat-panel {
+  display: none; /* Ocultar inicialmente */
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #0088cc;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 350px;
+  max-height: 500px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-}
-
-.telegram-icon {
-  font-size: 28px;
-}
-
-.telegram-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Ventana de chat */
-.chat-window {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: none;
-  flex-direction: column;
   overflow: hidden;
-  z-index: 1001;
+  display: flex; /* Asegura que los elementos hijos se ajusten correctamente */
+  flex-direction: column; /* Apilamiento vertical */
+  font-family: 'Arial', sans-serif;
 }
 
+/* Cabecera del chat */
+/* Cabecera del chat */
 .chat-header {
-  background-color: #0088cc;
-  color: white;
-  padding: 10px;
+  background: #28a745; /* Color verde de fondo */
+  color: #ffffff; /* Cambiar el color del texto a blanco */
+  padding: 12px 15px;
+  font-size: 18px; /* Tamaño del texto */
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 15px 15px 0 0;
 }
 
 .chat-header h5 {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px; /* Ajustar tamaño del texto */
+  color: #ffffff; /* Texto blanco */
 }
 
-.close-chat {
+
+.btn-close {
   background: none;
   border: none;
-  color: white;
-  font-size: 20px;
+  color: #ffffff; /* Texto blanco */
+  font-size: 24px; /* Tamaño más grande para la X */
   cursor: pointer;
 }
 
-.chat-body {
-  padding: 10px;
-  height: 200px;
-  overflow-y: auto;
-  background-color: #f9f9f9;
+.btn-close:hover {
+  color: #ffcccc; /* Cambia a un color más claro al pasar el cursor */
 }
 
+/* Cuerpo del chat */
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f8f9fa; /* Fondo gris claro */
+}
+
+/* Mensajes del chat */
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 90%; /* Ajusta si es necesario */
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+
+/* Mensajes del chatbot (izquierda) */
+.chat-message.bot {
+  background: #e8f0fe; /* Azul claro */
+  color: #333333;
+  align-self: flex-start;
+  border-radius: 10px 10px 10px 0; /* Bordes redondeados */
+}
+
+/* Mensajes del usuario (derecha) */
+/* Mensajes del usuario (derecha) */
+.chat-message.user {
+  background: #5ed57a; /* Color verde */
+  color: #ffffff;
+  align-self: flex-end; /* Alineación al lado derecho */
+  border-radius: 10px 10px 0 10px; /* Esquinas redondeadas */
+  max-width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left; /* Alineación del texto dentro del mensaje */
+  margin-left: auto; /* Empuja el mensaje hacia el lado derecho */
+}
+
+
+/* Pie del chat */
 .chat-footer {
   padding: 10px;
-  border-top: 1px solid #ddd;
   display: flex;
-  align-items: center;
-  background-color: #fff;
+  gap: 8px;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
 }
 
-.chat-input {
+.chat-footer input {
   flex: 1;
-  padding: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  margin-right: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
 }
 
-.send-button {
-  padding: 8px 12px;
-  background-color: #0088cc;
-  border: none;
-  color: white;
+.chat-footer input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.chat-footer button {
+  padding: 8px 15px;
   border-radius: 5px;
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.send-button:hover {
-  background-color: #0077b3;
+.chat-footer button:hover {
+  background: #0056b3;
 }
 
-.chat-message {
+/* Ajustes generales */
+ul.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.options li {
   margin: 5px 0;
-  padding: 8px 12px;
-  border-radius: 10px;
-  max-width: 80%;
+  font-size: 14px;
+  color: #333;
 }
 
-.bot-message {
-  background-color: #e0f7fa;
-  align-self: flex-start;
+.user-icon {
+  width: 100px; /* Ajusta el tamaño según lo necesites */
+  height: 100px; /* Mantén las proporciones cuadradas */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
 }
 
-.user-message {
-  background-color: #0088cc;
-  color: white;
-  align-self: flex-end;
+.custom-bg {
+  background-color: #ffffff; /* Cambia al color que desees */
+  width: 100%; /* Asegura que cubra todo el ancho */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Ajusta el espacio si es necesario */
+}
+
+/* Separación para el logotipo */
+.logo-container {
+  padding-left: 80px; /* Ajusta según el espacio deseado */
+}
+
+.logo {
+  max-height: 150px; /* Ajusta el tamaño del logotipo si es necesario */
+}
+
+/* Separación para el ícono del usuario */
+.user-icon-container {
+  padding-right: 80px; /* Ajusta según el espacio deseado */
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General: Ajustar el contenedor del logo y del ícono */
+.logo-container,
+.user-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajustes específicos del logo */
+.responsive-logo {
+  max-width: 120px; /* Tamaño estándar */
+  height: auto;
+  margin-left: auto;
+}
+
+/* Ajustes específicos del ícono de usuario */
+.responsive-user-icon {
+  max-width: 60px; /* Tamaño estándar */
+  height: auto;
+}
+
+/* Media Queries: Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  /* Reduce tamaños para móviles */
+  .responsive-logo {
+    max-width: 100px;
+  }
+
+  .responsive-user-icon {
+    max-width: 50px;
+  }
+
+  /* Ajusta la alineación en móviles */
+  .logo-container,
+  .user-icon-container {
+    flex: 1; /* Permite ajustar automáticamente el espacio */
+  }
+
+  /* Elimina el espaciador central */
+  .col.d-none.d-lg-block {
+    display: none;
+  }
+
+  /* Ajustar márgenes */
+  .logo-container {
+    margin-right: auto;
+  }
+
+  .user-icon-container {
+    margin-left: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Tamaño del logo */
+/* Tamaño general del logo */
+.responsive-logo {
+  max-width: 250px;
+  height: auto;
+  margin-left: auto;
+}
+
+/* Aumentar el tamaño del logo en pantallas grandes */
+@media (min-width: 992px) {
+  .responsive-logo {
+    max-width: 280px; /* Aumenta el tamaño para pantallas grandes */
+  }
+}
+
+
+/* Tamaño del ícono de usuario */
+.responsive-user-icon {
+  max-width: 80px; /* Tamaño proporcionado */
+  height: auto;
+}
+
+/* Media Queries para pantallas móviles */
+@media (max-width: 576px) {
+  .responsive-logo {
+    max-width: 120px; /* Reduce el tamaño en móviles */
+  }
+
+  .responsive-user-icon {
+    max-width: 60px; /* Reduce el tamaño del ícono de usuario en móviles */
+  }
+}

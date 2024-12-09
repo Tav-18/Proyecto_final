@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Waggy - Free eCommerce Pet Shop HTML Website Template</title>
+  <title>PetSmart</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,49 +101,6 @@
     </div>
   </div>
 
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-    <div class="offcanvas-header justify-content-center">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-circle pt-2">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Grey Hoodie</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Dog Food</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Soft Toy</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="fw-bold">Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-      </div>
-    </div>
-  </div>
-
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
     aria-labelledby="Search">
     <div class="offcanvas-header justify-content-center">
@@ -166,68 +123,50 @@
   </div>
 
   <header>
-    <div class="container py-2">
-      <div class="row py-4 pb-0 pb-sm-4 align-items-center ">
-
-        <div class="col-sm-4 col-lg-3 text-center text-sm-start">
-          <div class="main-logo">
-            <a href="index.html">
-              <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid">
-            </a>
+    <div class="container-fluid py-2 custom-bg">
+      <div class="container-fluid py-2 custom-bg">
+        <div class="row py-4 pb-0 pb-sm-4 align-items-center">
+          <!-- Logotipo -->
+          <div class="col-sm-4 col-lg-3 text-center text-sm-start logo-container">
+            <div class="main-logo">
+              <a href="index.html">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid responsive-logo">
+              </a>
+            </div>
+            
           </div>
-        </div>
-
-        <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5 d-none d-lg-block">
-          <div class="search-bar border rounded-2 px-3 border-dark-subtle">
-            <form id="search-form" class="text-center d-flex align-items-center" action="" method="">
-              <input type="text" class="form-control border-0 bg-transparent"
-                placeholder="Search for more than 10,000 products" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                  d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-              </svg>
-            </form>
+      
+          <!-- Espaciador para centrar y acomodar las columnas -->
+          <div class="col"></div>
+      
+          <!-- Ícono de usuario alineado a la derecha con opciones -->
+          <div class="col-auto d-flex justify-content-end align-items-center user-icon-container">
+            <div class="dropdown">
+              <a 
+                class="nav-link mx-3 dropdown-toggle" 
+                href="#" 
+                id="dropdownMenuButton" 
+                role="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false">
+                <img src="{% static 'images/usuario.png' %}" alt="Usuario" class="responsive-user-icon">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perfilModal">Perfil</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosDuenoModal">Datos del dueño</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosMascotaModal">Datos mascota</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-
-        <div
-          class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
-          <!---------------------------------------------->
-          <a 
-                  class="nav-link dropdown-toggle mx-3" 
-                  href="#" 
-                  id="dropdownMenuButton" 
-                  role="button" 
-                  data-bs-toggle="dropdown" 
-                  aria-expanded="false">
-                  <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li>
-                    <a 
-                      class="dropdown-item" 
-                      href="#" 
-                      data-bs-toggle="modal" 
-                      data-bs-target="#datosDuenoModal">
-                      Datos del dueño
-                    </a>
-                  </li>
-                  <li>
-                    <a 
-                      class="dropdown-item" 
-                      href="#" 
-                      data-bs-toggle="modal" 
-                      data-bs-target="#datosMascotaModal">
-                      Datos mascota
-                    </a>
-          </div>
-
-
-
         </div>
       </div>
+      
     </div>
-
+    
+    
+    
     <div class="container-fluid">
       <hr class="m-0">
     </div>
@@ -235,44 +174,7 @@
     <div class="container">
       <nav class="main-menu d-flex navbar navbar-expand-lg ">
 
-        <div class="d-flex d-lg-none align-items-end mt-3">
-          <ul class="d-flex justify-content-end list-unstyled m-0">
-            <li>
-              <a href="account.html" class="mx-3">
-                <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
-              </a>
-            </li>
-            <li>
-              <a href="wishlist.html" class="mx-3">
-                <iconify-icon icon="mdi:heart" class="fs-4"></iconify-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-                aria-controls="offcanvasCart">
-                <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                  03
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
-                aria-controls="offcanvasSearch">
-                <iconify-icon icon="tabler:search" class="fs-4"></iconify-icon>
-                </span>
-              </a>
-            </li>
-          </ul>
-
-        </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
@@ -464,15 +366,26 @@
   
 <style>
   .category-icon {
-    width: 100px; /* Ajusta el tamaño según necesites */
-    height: auto; /* Mantén las proporciones */
-    margin-bottom: 10px; /* Opcional, para dar espacio entre la imagen y el texto */
-  }
+  width: 100px; /* Controla el ancho de todos los íconos */
+  height: auto; /* Mantén las proporciones */
+  margin-bottom: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Opcional: Asegúrate de que todos los enlaces tengan estilos consistentes */
+.categories-item {
+  text-decoration: none; /* Elimina el subrayado en los enlaces */
+  color: #000; /* Define un color de texto por defecto */
+  transition: transform 0.2s ease; /* Efecto de escala al pasar el mouse */
+}
+
+.categories-item:hover {
+  transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
+}
 </style>
 
 <section id="categories">
-  <div class="container my-3 py-5">
-    <div class="row my-5">
+  <div class="container my-3 py-4"> <!-- Ajusté py-5 a py-3 -->
+    <div class="row my-4"> <!-- Ajusté my-5 a my-3 -->
       <div class="col text-center">
         <a href="#" class="categories-item">
           <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
@@ -482,11 +395,11 @@
       <div class="col text-center">
         <a href="#" class="categories-item">
           <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
-          <h5>Informacion</h5>
+          <h5>Información</h5>
         </a>
       </div>
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#" class="categories-item" onclick="toggleChatWindow()">
           <img src="{% static 'images/chat.png' %}" alt="Chat Icon" class="category-icon img-fluid">
           <h5>Chat</h5>
         </a>
@@ -496,69 +409,213 @@
 </section>
 
 
-  <section id="banner" style="background: #F9F3EC;">
-    <div class="container">
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
 
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img.png' %}" class="img-fluid">
-              </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Recomendacion: saca a pasear a tu perro almenos una vez por dia 
-                </h2>
-              </div>
+<div id="chat-panel" class="chat-panel">
+  <div class="chat-header">
+    <h5>PetChat</h5>
+    <button id="close-chat" class="btn-close" onclick="toggleChatWindow()">X</button>
+  </div>
+  <div id="chat-window" class="chat-body">
+    <!-- Mensajes de ejemplo -->
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="user-input" class="form-control" placeholder="Escribe un mensaje..." />
+    <button id="send-button" class="btn btn-primary">Enviar</button>
+  </div>
+</div>
 
+
+<script>
+  // Variables principales
+  let chatWindow = document.getElementById("chat-window");
+  let userInput = document.getElementById("user-input");
+  let isWaitingForResponse = false; // Bandera para evitar múltiples mensajes mientras se espera respuesta
+  let isAskingName = true; // Bandera para determinar si el chatbot está solicitando el nombre del usuario
+  let userName = ""; // Almacenar el nombre del usuario
+  
+  // Función para enviar un mensaje al backend
+  function sendMessage() {
+    if (isWaitingForResponse) return; // Bloquea si el chatbot está procesando una solicitud
+  
+    const userMessage = userInput.value.trim(); // Obtiene el mensaje del usuario
+  
+    if (userMessage !== "") {
+      appendMessage(userMessage, "user"); // Muestra el mensaje del usuario en el chat
+      userInput.value = ""; // Limpia el campo de entrada
+  
+      // Si el chatbot está solicitando el nombre
+      if (isAskingName) {
+        handleNameInput(userMessage); // Manejar el nombre ingresado por el usuario
+        return;
+      }
+  
+      isWaitingForResponse = true; // Activa el bloqueo para evitar múltiples mensajes
+  
+      // Muestra "Escribiendo..." mientras se espera la respuesta
+      appendMessage("Escribiendo...", "bot", true);
+  
+      // Realiza la solicitud al backend
+      fetch(`/api/chatbot/?message=${encodeURIComponent(userMessage)}`)
+        .then(response => response.json())
+        .then(data => {
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
+          appendMessage(data.bot_message, "bot"); // Muestra la respuesta del chatbot
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
+          appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+          isWaitingForResponse = false; // Desactiva el bloqueo
+        });
+    }
+  }
+  
+  // Función para manejar el nombre ingresado por el usuario
+  function handleNameInput(name) {
+    userName = name; // Almacena el nombre del usuario
+    appendMessage("Escribiendo...", "bot", true); // Muestra "Escribiendo..." mientras se obtiene la respuesta
+  
+    // Realiza una solicitud al backend para obtener las categorías
+    fetch(`/api/chatbot/?message=${encodeURIComponent(name)}`)
+      .then(response => response.json())
+      .then(data => {
+        removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..."
+        const personalizedMessage = `Hola ${userName}, ${data.bot_message}`; // Personaliza el mensaje con el nombre
+        appendMessage(personalizedMessage, "bot"); // Muestra el mensaje con las categorías
+        isAskingName = false; // Cambiar bandera porque ya se obtuvo el nombre
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        removeTemporaryMessage(); // Elimina el mensaje de "Escribiendo..." si falla
+        appendMessage("Lo siento, no puedo responder en este momento. Por favor, intenta más tarde.", "bot");
+      });
+  }
+  
+  // Función para mostrar un mensaje en el chat
+  function appendMessage(message, sender, isTemporary = false) {
+    const messageElement = document.createElement("div");
+    messageElement.className = `chat-message ${sender}`;
+    if (isTemporary) messageElement.classList.add("typing"); // Clase para mensajes temporales
+  
+    // Convierte los saltos de línea (\n) en etiquetas <br> para el HTML
+    const formattedMessage = message.split("\n").join("<br>");
+    messageElement.innerHTML = formattedMessage;
+  
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Desplaza automáticamente hacia abajo
+  }
+  
+  // Función para eliminar mensajes temporales como "Escribiendo..."
+  function removeTemporaryMessage() {
+    const typingMessage = document.querySelector(".typing");
+    if (typingMessage) typingMessage.remove();
+  }
+  
+  // Evento para manejar el clic en el botón "Enviar"
+  document.getElementById("send-button").addEventListener("click", sendMessage);
+  
+  // Evento para manejar el envío con la tecla Enter
+  userInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Evita el salto de línea
+      sendMessage(); // Envía el mensaje
+    }
+  });
+  
+  // Inicializa el chat preguntando por el nombre del usuario
+  window.onload = function () {
+    document.getElementById("chat-panel").style.display = "none"; // Oculta el chat por defecto
+    appendMessage("¡Hola! ¿Me puedes dar tu nombre?", "bot"); // Primera pregunta
+  };
+  
+  // Función para alternar la visibilidad del chat
+  function toggleChatWindow() {
+    const chatPanel = document.getElementById("chat-panel");
+  
+    // Alterna entre mostrar y ocultar el chat
+    if (chatPanel.style.display === "none" || chatPanel.style.display === "") {
+      chatPanel.style.display = "flex"; // Mostrar el chat
+    } else {
+      chatPanel.style.display = "none"; // Ocultar el chat
+    }
+  }
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+<section id="banner" style="background: #F9F3EC;">
+  <div class="container">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Primer Slide -->
+        <div class="swiper-slide py-2"> <!-- Menor padding vertical -->
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;"> <!-- Controlar altura de la imagen -->
             </div>
-          </div>
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img3.png' %}" class="img-fluid">
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;"> <!-- Reducir tamaño de texto -->
+                Recomendación:
               </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Best destination for <span class="text-primary">your
-                    pets</span>
-                </h2>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                  shop now
-                  <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></a>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide py-5">
-            <div class="row banner-content align-items-center">
-              <div class="img-wrapper col-md-5">
-                <img src="{% static 'images/banner-img4.png' %}" class="img-fluid">
-              </div>
-              <div class="content-wrapper col-md-7 p-5 mb-5">
-                <div class="secondary-font text-primary text-uppercase mb-4">Save 10 - 20 % off</div>
-                <h2 class="banner-title display-1 fw-normal">Best destination for <span class="text-primary">your
-                    pets</span>
-                </h2>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                  shop now
-                  <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></a>
-              </div>
-
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Establece una rutina diaria para tu perro que incluya horarios regulares de alimentación, paseos y tiempo de juego. Esto les proporciona estabilidad emocional y mejora su comportamiento
+              </h2>
             </div>
           </div>
         </div>
 
-        <div class="swiper-pagination mb-5"></div>
+        <!-- Segundo Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/banner-img3.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Recomendación
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Proporciona un ambiente enriquecido con rascadores, juguetes interactivos y lugares elevados para trepar. Esto estimula su instinto natural y previene el estrés.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tercer Slide -->
+        <div class="swiper-slide py-2">
+          <div class="row banner-content align-items-center">
+            <div class="img-wrapper col-md-5">
+              <img src="{% static 'images/revision-medica.png' %}" class="img-fluid" style="max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="content-wrapper col-md-7 p-3 mb-3">
+              <div class="secondary-font text-primary text-uppercase mb-2" style="font-size: 14px;">
+                Recomendación
+              </div>
+              <h2 class="banner-title display-5 fw-normal" style="font-size: 22px; line-height: 1.2;"> <!-- Reducir tamaño de fuente y ajustar line-height -->
+                Realiza chequeos veterinarios regulares cada 6 meses para asegurarte de que tu mascota está en óptimas condiciones de salud.
+              </h2>
+            </div>
+          </div>
+        </div>
 
       </div>
+
+      <div class="swiper-pagination mb-3"></div> <!-- Menor margen inferior -->
     </div>
-  </section>
+  </div>
+</section>
+
 
 
 
