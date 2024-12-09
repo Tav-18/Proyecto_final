@@ -124,73 +124,45 @@
 
   <header>
     <div class="container-fluid py-2 custom-bg">
-      <div class="row py-4 pb-0 pb-sm-4 align-items-center">
-        <!-- Logotipo -->
-        <div class="col-sm-4 col-lg-3 text-center text-sm-start logo-container">
-          <div class="main-logo">
-            <a href="index.html">
-              <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid logo">
-            </a>
+      <div class="container-fluid py-2 custom-bg">
+        <div class="row py-4 pb-0 pb-sm-4 align-items-center">
+          <!-- Logotipo -->
+          <div class="col-sm-4 col-lg-3 text-center text-sm-start logo-container">
+            <div class="main-logo">
+              <a href="index.html">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid responsive-logo">
+              </a>
+            </div>
+            
           </div>
-        </div>
-    
-        <!-- Espaciador para centrar y acomodar las columnas -->
-        <div class="col"></div>
-    
-        <!-- Ícono de usuario alineado a la derecha con opciones -->
-        <div class="col-auto d-flex justify-content-end align-items-center user-icon-container">
-          <div class="dropdown">
-            <a 
-              class="nav-link mx-3 dropdown-toggle" 
-              href="#" 
-              id="dropdownMenuButton" 
-              role="button" 
-              data-bs-toggle="dropdown" 
-              aria-expanded="false">
-              <img src="{% static 'images/usuario.png' %}" alt="Usuario" class="user-icon">
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a 
-                  class="dropdown-item" 
-                  href="#" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#perfilModal">
-                  Perfil
-                </a>
-              </li>
-              <li>
-                <a 
-                  class="dropdown-item" 
-                  href="#" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#datosDuenoModal">
-                  Datos del dueño
-                </a>
-              </li>
-              <li>
-                <a 
-                  class="dropdown-item" 
-                  href="#" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#datosMascotaModal">
-                  Datos mascota
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li>
-                <a 
-                  class="dropdown-item" 
-                  href="login.html">
-                  Cerrar sesión
-                </a>
-              </li>
-            </ul>
+      
+          <!-- Espaciador para centrar y acomodar las columnas -->
+          <div class="col"></div>
+      
+          <!-- Ícono de usuario alineado a la derecha con opciones -->
+          <div class="col-auto d-flex justify-content-end align-items-center user-icon-container">
+            <div class="dropdown">
+              <a 
+                class="nav-link mx-3 dropdown-toggle" 
+                href="#" 
+                id="dropdownMenuButton" 
+                role="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false">
+                <img src="{% static 'images/usuario.png' %}" alt="Usuario" class="responsive-user-icon">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perfilModal">Perfil</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosDuenoModal">Datos del dueño</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosMascotaModal">Datos mascota</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
     
     
@@ -202,44 +174,7 @@
     <div class="container">
       <nav class="main-menu d-flex navbar navbar-expand-lg ">
 
-        <div class="d-flex d-lg-none align-items-end mt-3">
-          <ul class="d-flex justify-content-end list-unstyled m-0">
-            <li>
-              <a href="account.html" class="mx-3">
-                <iconify-icon icon="healthicons:person" class="fs-4"></iconify-icon>
-              </a>
-            </li>
-            <li>
-              <a href="wishlist.html" class="mx-3">
-                <iconify-icon icon="mdi:heart" class="fs-4"></iconify-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-                aria-controls="offcanvasCart">
-                <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                  03
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
-                aria-controls="offcanvasSearch">
-                <iconify-icon icon="tabler:search" class="fs-4"></iconify-icon>
-                </span>
-              </a>
-            </li>
-          </ul>
-
-        </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
