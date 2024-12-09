@@ -17,7 +17,7 @@ def chatbot_view(request):
     if chat_state["step"] == "start":
         # Mostrar las categorías disponibles
         categories = Categoria.objects.all()
-        response = "Hola, ¿en qué puedo ayudarte?\n"
+        response = " ¿en qué puedo ayudarte?\n Selecciona un numero\n"
         response += "\n".join([f"{category.id}. {category.nombre}" for category in categories])
         chat_state["step"] = "categories"  # Avanza al siguiente estado
         return JsonResponse({"bot_message": response})
@@ -31,7 +31,7 @@ def chatbot_view(request):
             questions = category.preguntas.all()
             if questions.exists():
                 response = f"Has seleccionado: {category.nombre}\n"
-                response += "Elige una pregunta:\n"
+                response += "Elige el nummero de pregunta:\n"
                 response += "\n".join([f"{question.id}. {question.pregunta_texto}" for question in questions])
                 chat_state["step"] = "questions"  # Avanza al siguiente estado
             else:
