@@ -6,3 +6,8 @@ def home_views(request):
     template_name = "index.html"
     
     return render(request, template_name)
+
+def camera_views(request):
+    template_name = "camera.html"
+    
+    return render(request, template_name)
