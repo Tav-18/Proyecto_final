@@ -17,10 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api.login.login_views import (login_views, 
-                                register_views,
-                                forgot_views
-                                )
-from api.home.home_views import home_views
+register_views,forgot_views)
+from api.home.home_views import home_views,camera_views
 from api.dato_masc.dato_masc_views import guardar_datos_mascota
 from api.datos_usu.datos_usu_views import guardar_datos_dueno
 from api.chatbot.chatbot_views import chatbot_view
@@ -38,6 +36,7 @@ urlpatterns = [
     path('register/', register_views, name='register'),
     path('forgot/', forgot_views, name='forgot'),
     path('home/', home_views, name='home'),
+    path('camera/', camera_views, name='camera'),
     path('guardar-dueno/', guardar_datos_dueno, name='guardar_dueno'),
     path('guardar-mascota/', guardar_datos_mascota, name='guardar_mascota'),
     path('datos-usuario/', include('api.datos_usu.urls')),
