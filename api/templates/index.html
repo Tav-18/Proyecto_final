@@ -129,7 +129,7 @@
           <!-- Logotipo -->
           <div class="col-sm-4 col-lg-3 text-center text-sm-start logo-container">
             <div class="main-logo">
-              <a href="index.html">
+              <a href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid responsive-logo">
               </a>
             </div>
@@ -151,15 +151,61 @@
                 aria-expanded="false">
                 <img src="{% static 'images/usuario.png' %}" alt="Usuario" class="responsive-user-icon">
               </a>
+              {% csrf_token %}
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perfilModal">Perfil</a></li>
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosDuenoModal">Datos del dueño</a></li>
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#datosMascotaModal">Datos mascota</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="{% url 'login' %}">Cerrar sesión</a></li>
               </ul>
             </div>
           </div>
+          
+          <!-- Modal para Perfil -->
+          <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="perfilModalLabel">Perfil del Usuario</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="nav nav-tabs" id="perfilTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="datosUsuario-tab" data-bs-toggle="tab" data-bs-target="#datosUsuario" type="button" role="tab" aria-controls="datosUsuario" aria-selected="true">Datos Usuario</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="datosMascota-tab" data-bs-toggle="tab" data-bs-target="#datosMascota" type="button" role="tab" aria-controls="datosMascota" aria-selected="false">Datos Mascota</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content mt-3" id="perfilTabsContent">
+                    <!-- Datos Usuario -->
+                    <div class="tab-pane fade show active" id="datosUsuario" role="tabpanel" aria-labelledby="datosUsuario-tab">
+                      <ul>
+                        <li>Nombre: Kevin Rafael</li>
+                        <li>Apellido: Cano Perez</li>
+                        <li>Telefono: 5542963180</li>
+                        <li>Numero de Mascotas: 2</li>
+                      </ul>
+                    </div>
+                    <!-- Datos Mascota -->
+                    <div class="tab-pane fade" id="datosMascota" role="tabpanel" aria-labelledby="datosMascota-tab">
+                      <ul>
+                        <li>Nombre: Rex</li>
+                        <li>Tipo de mascota: Perro</li>
+                        <li>Edad: 3 años</li>
+                        <li>Tamaño: Mediano </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>          
         </div>
       </div>
       
@@ -366,36 +412,54 @@
   
 <style>
   .category-icon {
-  width: 100px; /* Controla el ancho de todos los íconos */
-  height: auto; /* Mantén las proporciones */
-  margin-bottom: 10px; /* Espaciado entre el ícono y el texto */
-}
+    width: 100px; /* Controla el ancho de todos los íconos */
+    height: auto; /* Mantén las proporciones */
+    margin-bottom: 10px; /* Espaciado entre el ícono y el texto */
+  }
 
-/* Opcional: Asegúrate de que todos los enlaces tengan estilos consistentes */
-.categories-item {
-  text-decoration: none; /* Elimina el subrayado en los enlaces */
-  color: #000; /* Define un color de texto por defecto */
-  transition: transform 0.2s ease; /* Efecto de escala al pasar el mouse */
-}
+  /* Opcional: Asegúrate de que todos los enlaces tengan estilos consistentes */
+  .categories-item {
+    text-decoration: none; /* Elimina el subrayado en los enlaces */
+    color: #000; /* Define un color de texto por defecto */
+    transition: transform 0.2s ease; /* Efecto de escala al pasar el mouse */
+  }
 
-.categories-item:hover {
-  transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
-}
+  .categories-item:hover {
+    transform: scale(1.1); /* Agranda ligeramente el botón al pasar el mouse */
+  }
+
+  .dynamic-content {
+    display: none;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    text-align: center; /* Centra el contenido del modal */
+  }
+
+  .dynamic-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
 
 <section id="categories">
   <div class="container my-3 py-4"> <!-- Ajusté py-5 a py-3 -->
     <div class="row my-4"> <!-- Ajusté my-5 a my-3 -->
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="{% url 'camera' %}" class="categories-item">
           <img src="{% static 'images/camara.png' %}" alt="Camara Icon" class="category-icon img-fluid">
           <h5>Camara</h5>
         </a>
       </div>
       <div class="col text-center">
-        <a href="#" class="categories-item">
+        <a href="#" id="firstAidButton" class="categories-item">
           <img src="{% static 'images/info.png' %}" alt="Informacion Icon" class="category-icon img-fluid">
-          <h5>Información</h5>
+          <h5>Primeros Auxilios</h5>
         </a>
       </div>
       <div class="col text-center">
@@ -408,7 +472,155 @@
   </div>
 </section>
 
+<!-- Modal Interactivo -->
+<div class="modal fade" id="firstAidModal" tabindex="-1" aria-labelledby="firstAidModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="firstAidModalLabel">Primeros Auxilios para Mascotas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Selecciona una emergencia:</h6>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="chokingOption" data-img-url="{% static 'images/atragantamiento.jpg' %}">
+              Atragantamiento
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="bleedingOption" data-img-url="{% static 'images/hemorragias.jpg' %}">
+              Hemorragias
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="poisoningOption" data-img-url="{% static 'images/envenenamiento.jpg' %}">
+              Envenenamiento
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="quemadura" data-img-url="{% static 'images/quemadura.png' %}">
+              Quemadura
+            </button>w
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="fractura" data-img-url="{% static 'images/fractura.jpg' %}">
+              fractura
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="calor" data-img-url="{% static 'images/calor.jpg' %}">
+              Golpe de Calor
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="heridas" data-img-url="{% static 'images/heridas.jpg' %}">
+              Heridas
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="respirar" data-img-url="{% static 'images/respirar.jpg' %}">
+              Dificultad Respiratoria
+            </button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-link text-decoration-none" id="picadura" data-img-url="{% static 'images/picadura.jpg' %}">
+              Picadura de Insecto
+            </button>
+          </li>
+        </ul>
+        <div id="dynamicContent" class="dynamic-content">
+          <p id="dynamicText">Selecciona una categoría para mostrar información.</p>
+          <img id="dynamicImage" src="" alt="Imagen ilustrativa">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Inicializa el modal
+    const firstAidModal = new bootstrap.Modal(document.getElementById('firstAidModal'));
+
+    // Elementos de la interfaz
+    const dynamicContent = document.getElementById('dynamicContent');
+    const dynamicText = document.getElementById('dynamicText');
+    const dynamicImage = document.getElementById('dynamicImage');
+    const firstAidButton = document.getElementById('firstAidButton');
+
+    // Opciones dentro del modal
+    const chokingOption = document.getElementById('chokingOption');
+    const bleedingOption = document.getElementById('bleedingOption');
+    const poisoningOption = document.getElementById('poisoningOption');
+    const quemadura = document.getElementById('quemadura');
+    const fractura = document.getElementById('fractura');
+    const calor = document.getElementById('calor');
+    const heridas = document.getElementById('heridas');
+    const respirar = document.getElementById('respirar');
+    const picadura = document.getElementById('picadura');
+
+    // Abrir el modal de primeros auxilios
+    firstAidButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      dynamicContent.style.display = 'none'; // Ocultar contenido dinámico por defecto
+      firstAidModal.show();
+    });
+
+    // Manejadores de las opciones
+    chokingOption.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Si tu mascota está atragantándose, intenta retirar el objeto con cuidado. Si no puedes, realiza la maniobra de Heimlich.';
+      dynamicImage.src = chokingOption.getAttribute('data-img-url');
+    });
+
+    bleedingOption.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Para detener una hemorragia, aplica presión directa con una gasa o paño limpio sobre la herida.';
+      dynamicImage.src = bleedingOption.getAttribute('data-img-url');
+    });
+
+    poisoningOption.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Si tu mascota ha ingerido algo tóxico, contacta al veterinario inmediatamente.';
+      dynamicImage.src = poisoningOption.getAttribute('data-img-url');
+    });
+    quemadura.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Lava la zona afectada con agua fría durante al menos 10 minutos No apliques ungüentos, aceites o mantequilla Cubre la quemadura con un paño limpio y húmedo Lleva a la mascota al veterinario lo antes posible'
+      dynamicImage.src = quemadura.getAttribute('data-img-url');
+    });
+
+    fractura.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Mantén a la mascota lo más inmóvil posible Si es necesario, utiliza una tabla o superficie rígida como camilla No intentes colocar el hueso en su lugar Cubre la zona afectada con una venda para protegerla mientras acudes al veterinario.';
+      dynamicImage.src = fractura.getAttribute('data-img-url');
+    });
+    calor.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Lleva a la mascota a un lugar fresco y ventilado. Moja su cuerpo con agua tibia o fresca, especialmente en patas, abdomen y cabeza. Proporciona agua fresca para beber, pero no la obligues. Llama al veterinario urgentemente.';
+      dynamicImage.src = calor.getAttribute('data-img-url');
+    });
+    heridas.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Lava la herida con agua tibia o solución salina. Aplica presión con una gasa limpia si hay sangrado. Cubre la herida con un vendaje limpio. Consulta a un veterinario para evitar infecciones o complicaciones.';
+      dynamicImage.src = heridas.getAttribute('data-img-url');
+    });
+    respirar.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Mantén a la mascota calmada y en un lugar ventilado. Revisa si hay algún objeto obstruyendo las vías respiratorias, pero no introduzcas tus dedos si no es necesario. Evita estresar más a la mascota. Llama al veterinario inmediatamente.';
+      dynamicImage.src = respirar.getAttribute('data-img-url');
+    });
+    picadura.addEventListener('click', function () {
+      dynamicContent.style.display = 'block';
+      dynamicText.textContent = 'Si hay aguijón visible, retíralo cuidadosamente con unas pinzas. Aplica una compresa fría en la zona afectada para reducir la hinchazón. Monitorea signos de alergia, como dificultad para respirar o hinchazón generalizada. Acude al veterinario si notas reacciones graves.';
+      dynamicImage.src = picadura.getAttribute('data-img-url');
+    });
+  });
+</script>
 
 <div id="chat-panel" class="chat-panel">
   <div class="chat-header">
