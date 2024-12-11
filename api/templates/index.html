@@ -206,6 +206,52 @@
               </ul>
             </div>
           </div>
+          
+          <!-- Modal para Perfil -->
+          <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="perfilModalLabel">Perfil del Usuario</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="nav nav-tabs" id="perfilTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="datosUsuario-tab" data-bs-toggle="tab" data-bs-target="#datosUsuario" type="button" role="tab" aria-controls="datosUsuario" aria-selected="true">Datos Usuario</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="datosMascota-tab" data-bs-toggle="tab" data-bs-target="#datosMascota" type="button" role="tab" aria-controls="datosMascota" aria-selected="false">Datos Mascota</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content mt-3" id="perfilTabsContent">
+                    <!-- Datos Usuario -->
+                    <div class="tab-pane fade show active" id="datosUsuario" role="tabpanel" aria-labelledby="datosUsuario-tab">
+                      <ul>
+                        <li>Nombre: Kevin Rafael</li>
+                        <li>Apellido: Cano Perez</li>
+                        <li>Telefono: 5542963180</li>
+                        <li>Numero de mascotas: 3</li>
+                      </ul>
+                    </div>
+                    <!-- Datos Mascota -->
+                    <div class="tab-pane fade" id="datosMascota" role="tabpanel" aria-labelledby="datosMascota-tab">
+                      <ul>
+                        <li>Nombre: Rex</li>
+                        <li>Tipo de mascota: Perro</li>
+                        <li>Edad: 3 años</li>
+                        <li>Mediano</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
       
